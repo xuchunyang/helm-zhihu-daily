@@ -1,6 +1,6 @@
 # helm interface for [知乎日报](http://daily.zhihu.com)
 
-![Imgur](http://i.imgur.com/wklZsT2.png)
+![Imgur](http://i.imgur.com/i6RLz8Q.png)
 
 ## Usage
 
