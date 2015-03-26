@@ -75,7 +75,7 @@
   (browse-url (plist-get cand :share_url)))
 
 (defvar helm-zhihu-daily-source
-  `((name . ,(concat "知乎日报" " " (format-time-string "%Y.%M.%d %a")))
+  `((name . ,(concat "知乎日报" " " (format-time-string "%Y.%m.%d %a")))
     (candidates . helm-zhihu-daily-init)
     (action . (("Browse Link in EWW" . helm-zhihu-daily-eww-browse-link)
                ("Browse Link in default web browser" . helm-zhihu-daily-browse-link)))
