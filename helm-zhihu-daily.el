@@ -1,4 +1,4 @@
-;;; helm-zhihu-daily.el --- helm interface for http://daily.zhihu.com
+;;; helm-zhihu-daily.el --- helm interface for Zhihu Daily <http://daily.zhihu.com>
 
 ;; Copyright (C) 2015 by Chunyang Xu
 
