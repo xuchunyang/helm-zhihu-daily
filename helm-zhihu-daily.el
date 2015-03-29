@@ -54,7 +54,7 @@
 (defvar helm-zhihu-daily-url "http://news.at.zhihu.com/api/1.2/news/latest"
   "The url to grab the list of news from Zhihu Daily.")
 
-(defun helm-zhihu-daily-get-posts ()
+(defun helm-zhihu-daily--get-posts ()
   (let (json)
     (with-current-buffer (url-retrieve-synchronously helm-zhihu-daily-url)
       (goto-char (point-min))
@@ -65,32 +65,32 @@
       (kill-buffer (current-buffer)))
     (json-read-from-string json)))
 
-(defun helm-zhihu-daily-encoding (string)
+(defun helm-zhihu-daily--encoding (string)
   "Encoding."
   (decode-coding-string
    (encode-coding-string string 'utf-8) 'utf-8))
 
-(defun helm-zhihu-daily-init ()
-  (let ((json-res (helm-zhihu-daily-get-posts)))
+(defun helm-zhihu-daily--init ()
+  (let ((json-res (helm-zhihu-daily--get-posts)))
     (cl-loop with posts = (assoc-default 'news json-res)
              for post across posts
-             for title = (helm-zhihu-daily-encoding (assoc-default 'title post))
+             for title = (helm-zhihu-daily--encoding (assoc-default 'title post))
              ;; for url = (assoc-default 'url post) ; URL to raw content (in JSON)
              for share_url = (assoc-default 'share_url post)
              collect
              (cons title (list :share_url share_url)))))
 
-(defun helm-zhihu-daily-eww-browse-link (cand)
+(defun helm-zhihu-daily--eww-browse-link (cand)
   (eww-browse-url (plist-get cand :share_url)))
 
-(defun helm-zhihu-daily-browse-link (cand)
+(defun helm-zhihu-daily--browse-link (cand)
   (browse-url (plist-get cand :share_url)))
 
 (defvar helm-zhihu-daily-source
   `((name . ,(concat "知乎日报" " " (format-time-string "%Y.%m.%d %a")))
-    (candidates . helm-zhihu-daily-init)
-    (action . (("Browse Link in EWW" . helm-zhihu-daily-eww-browse-link)
-               ("Browse Link in default web browser" . helm-zhihu-daily-browse-link)))
+    (candidates . helm-zhihu-daily--init)
+    (action . (("Browse Link in EWW" . helm-zhihu-daily--eww-browse-link)
+               ("Browse Link in default web browser" . helm-zhihu-daily--browse-link)))
     (candidate-number-limit . 9999)))
 
 ;;;###autoload
