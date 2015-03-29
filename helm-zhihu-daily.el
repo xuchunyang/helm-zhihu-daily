@@ -1,4 +1,4 @@
-;;; helm-zhihu-daily.el --- helm interface for Zhihu Daily <http://daily.zhihu.com>
+;;; helm-zhihu-daily.el --- Helm interface for 知乎日报 (http://daily.zhihu.com)
 
 ;; Copyright (C) 2015 by Chunyang Xu
 
@@ -22,9 +22,21 @@
 
 ;;; Commentary:
 
-;; helm interface for 知乎日报 http://daily.zhihu.com
+;; Helm interface for [知乎日报](http://daily.zhihu.com)
 ;;
-;; This package needs Emacs 24.4 because it uses a function from EWW.
+;; Screenshot:
+;;
+;; ![Imgur](http://i.imgur.com/i6RLz8Q.png)
+;;
+;; Installation:
+;;
+;; You can install `helm-zhihu-daily' from [MELPA](http://melpa.org/) with package.el.
+;;
+;; M-x package-install RET helm-zhihu-daily RET
+;;
+;; Usage:
+;;
+;; M-x helm-zhihu-daily RET
 
 ;;; Code:
 
