@@ -1,7 +1,7 @@
 language: emacs-lisp
 env:
   matrix:
-    - EMACS=emacs24
+    # - EMACS=emacs24 # require 24.4+, this doesn't work
     - EMACS=emacs-snapshot
   global:
     - CASK=$HOME/.cask/bin/cask

@@ -1,4 +1,4 @@
-# helm-zhihu-daily.el [![MELPA](http://melpa.org/packages/helm-zhihu-daily-badge.svg)](http://melpa.org/#/helm-zhihu-daily)
+# helm-zhihu-daily.el [![Build Status](https://travis-ci.org/xuchunyang/helm-zhihu-daily.svg?branch=master)](https://travis-ci.org/xuchunyang/helm-zhihu-daily) [![MELPA](http://melpa.org/packages/helm-zhihu-daily-badge.svg)](http://melpa.org/#/helm-zhihu-daily)
 
 Helm interface for [知乎日报](http://daily.zhihu.com)
 
