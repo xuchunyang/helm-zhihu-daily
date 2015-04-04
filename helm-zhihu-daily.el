@@ -4,7 +4,7 @@
 
 ;; Author: Chunyang Xu <xuchunyang56@gmail.com>
 ;; URL: https://github.com/xuchunyang/helm-zhihu-daily
-;; Version: 0.1
+;; Version: 0.2
 ;; Package-Requires: ((helm "1.0") (cl-lib "0.5") (emacs "24.4"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -37,6 +37,10 @@
 ;; Usage:
 ;;
 ;; M-x helm-zhihu-daily RET
+
+;;; Change Log:
+;; 0.2   - 2015/04/04 - Enable Cache (via variable).
+;; 0.1   - 2015/03/27 - Created File.
 
 ;;; Code:
 
