@@ -70,15 +70,21 @@
   (decode-coding-string
    (encode-coding-string string 'utf-8) 'utf-8))
 
+(defvar helm-zhihu-daily--json-res nil)
+(defvar helm-zhihu-daily--refresh-json-res-flag nil)
+
 (defun helm-zhihu-daily--init ()
-  (let ((json-res (helm-zhihu-daily--get-posts)))
-    (cl-loop with posts = (assoc-default 'news json-res)
-             for post across posts
-             for title = (helm-zhihu-daily--encoding (assoc-default 'title post))
-             ;; for url = (assoc-default 'url post) ; URL to raw content (in JSON)
-             for share_url = (assoc-default 'share_url post)
-             collect
-             (cons title (list :share_url share_url)))))
+  (when (or (null helm-zhihu-daily--json-res)
+            helm-zhihu-daily--refresh-json-res-flag)
+    (setq helm-zhihu-daily--json-res (helm-zhihu-daily--get-posts)))
+
+  (cl-loop with posts = (assoc-default 'news helm-zhihu-daily--json-res)
+           for post across posts
+           for title = (helm-zhihu-daily--encoding (assoc-default 'title post))
+           ;; for url = (assoc-default 'url post) ; URL to raw content (in JSON)
+           for share_url = (assoc-default 'share_url post)
+           collect
+           (cons title (list :share_url share_url))))
 
 (defun helm-zhihu-daily--eww-browse-link (cand)
   (eww-browse-url (plist-get cand :share_url)))
@@ -94,8 +100,11 @@
     (candidate-number-limit . 9999)))
 
 ;;;###autoload
-(defun helm-zhihu-daily ()
-  (interactive)
+(defun helm-zhihu-daily (arg)
+  "helm 知乎日报.
+If ARG is non-nil, refresh explicitly."
+  (interactive "P")
+  (setq helm-zhihu-daily--refresh-json-res-flag arg)
   (helm :sources '(helm-zhihu-daily-source) :buffer "*helm-zhihu-daily*"))
 
 (provide 'helm-zhihu-daily)
