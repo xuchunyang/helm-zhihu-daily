@@ -97,11 +97,12 @@
   (browse-url (plist-get cand :share_url)))
 
 (defvar helm-zhihu-daily-source
-  `((name . ,(concat "知乎日报" " " (format-time-string "%Y.%m.%d %a")))
-    (candidates . helm-zhihu-daily--init)
-    (action . (("Browse Link in EWW" . helm-zhihu-daily--eww-browse-link)
-               ("Browse Link in default web browser" . helm-zhihu-daily--browse-link)))
-    (candidate-number-limit . 9999)))
+  (helm-build-sync-source (concat "知乎日报" " " (format-time-string "%Y.%m.%d %a"))
+    :candidates #'helm-zhihu-daily--init
+    :action (helm-make-actions
+             "Browse Link in EWW" #'helm-zhihu-daily--eww-browse-link
+             "Browse Link in default web browser"  #'helm-zhihu-daily--browse-link)
+    :candidate-number-limit 9999))
 
 ;;;###autoload
 (defun helm-zhihu-daily (arg)
