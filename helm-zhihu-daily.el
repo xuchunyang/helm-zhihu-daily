@@ -110,7 +110,7 @@
 If ARG is non-nil, refresh explicitly."
   (interactive "P")
   (setq helm-zhihu-daily--refresh-json-res-flag arg)
-  (helm :sources '(helm-zhihu-daily-source) :buffer "*helm-zhihu-daily*"))
+  (helm :sources 'helm-zhihu-daily-source :buffer "*helm-zhihu-daily*"))
 
 (provide 'helm-zhihu-daily)
 
