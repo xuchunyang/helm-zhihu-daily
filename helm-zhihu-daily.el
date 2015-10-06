@@ -90,18 +90,14 @@
            collect
            (cons title (list :share_url share_url))))
 
-(defun helm-zhihu-daily--eww-browse-link (cand)
-  (eww-browse-url (plist-get cand :share_url)))
-
-(defun helm-zhihu-daily--browse-link (cand)
-  (browse-url (plist-get cand :share_url)))
-
 (defvar helm-zhihu-daily-source
   (helm-build-sync-source (concat "知乎日报" " " (format-time-string "%Y.%m.%d %a"))
     :candidates #'helm-zhihu-daily--init
+    :coerce (lambda (cand) (plist-get cand :share_url))
     :action (helm-make-actions
-             "Browse Link in EWW" #'helm-zhihu-daily--eww-browse-link
-             "Browse Link in default web browser"  #'helm-zhihu-daily--browse-link)
+             "Browse Link in EWW" #'eww-browse-url
+             "Browse Link in Default Web Browser" #'browse-url
+             "Copy Link to Kill Ring" #'kill-new)
     :candidate-number-limit 9999))
 
 ;;;###autoload
