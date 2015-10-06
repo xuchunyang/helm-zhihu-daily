@@ -48,8 +48,6 @@
 
 (require 'helm)
 (require 'json)
-(require 'eww)
-(require 'browse-url)
 
 (defgroup helm-zhihu-daily nil
   "helm interface for 知乎日报 (http://daily.zhihu.com/)."
