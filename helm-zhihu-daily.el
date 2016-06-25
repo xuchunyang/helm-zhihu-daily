@@ -4,7 +4,7 @@
 
 ;; Author: Chunyang Xu <xuchunyang56@gmail.com>
 ;; URL: https://github.com/xuchunyang/helm-zhihu-daily
-;; Version: 0.2
+;; Version: 0.3
 ;; Package-Requires: ((helm "1.0") (cl-lib "0.5") (emacs "24.4"))
 
 ;; This program is free software; you can redistribute it and/or modify
